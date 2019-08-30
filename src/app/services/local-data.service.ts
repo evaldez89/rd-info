@@ -7,6 +7,39 @@ export class LocalDataService {
 
   constructor() { }
 
+  getFuelTypes() {
+    return [
+      { name: 'Kerosene',
+        queryCode: 'Kerosene',
+        code: ''
+      },
+      { name: 'Gasoil Optimo',
+        queryCode: 'GasoilOptimo',
+        code: ''
+      },
+      { name: 'Gasoil Regular',
+        queryCode: 'GasoilRegular',
+        code: ''
+      },
+      { name: 'Gas Natural',
+        queryCode: 'GasNaturalVehicular(GNV)',
+        code: 'GNV'
+      },
+      { name: 'Gas Licuado de Petróleo',
+        queryCode: 'GasLicuadodePetróleo(GLP)',
+        code: 'GLP'
+      },
+      { name: 'Gasolina Premium',
+        queryCode: 'GasolinaPremium',
+        code: ''
+      },
+      { name: 'Gasolina Regular',
+        queryCode: 'GasolinaRegular',
+        code: ''
+       }
+    ];
+  }
+
   getBankCodes() {
     return [
       { name: 'Banco Popular Dominicano',	code: 'bpd'},
