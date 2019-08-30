@@ -24,7 +24,7 @@ export class Tab2Page implements OnInit {
     this.maxDate = moment().format('Y-MM');
   }
 
-  dateChanged( event ) {
+  periodChanged( event ) {
     this.daysToShow = [];
     const firstDayOfTheMonth = moment(event.detail.value).startOf('month');
     const lastDayOfTheMonth = moment(event.detail.value).endOf('month');

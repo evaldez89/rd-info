@@ -11,7 +11,7 @@
                   placeholder="Mes y Año"
                   [min]="minDate"
                   [max]="maxDate"
-                  (ionChange)="dateChanged( $event )">
+                  (ionChange)="periodChanged( $event )">
     </ion-datetime>
   </ion-item>
   <ion-item *ngIf="daysToShow.length > 0">
