@@ -41,15 +41,16 @@ export class LocalDataService {
   }
 
   getBankCodes() {
+    // TODO: consider using more properties like: short name, long name, etc.
     return [
-      { name: 'Banco Popular Dominicano',	code: 'bpd'},
+      { name: 'Banco Central',	code: 'bcd'},
+      { name: 'Banco Popular',	code: 'bpd'},
+      { name: 'Banco Vimenca',	code: 'bvm'},
       { name: 'Banco de Reservas',	code: 'bnr'},
       { name: 'Banco del Progreso',	code: 'bpr'},
       { name: 'Banco Santa Cruz',	code: 'bsc'},
       { name: 'Banco BDI',	code: 'bdi'},
       { name: 'Banco Promerica',	code: 'bpm'},
-      { name: 'Banco Vimenca',	code: 'bvm'},
-      { name: 'Banco Central de RD',	code: 'bcd'}
     ];
   }
 
