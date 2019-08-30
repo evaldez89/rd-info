@@ -3,7 +3,7 @@ import { IndexaApiService } from '../services/indexa-api.service';
 import * as moment from 'moment';
 import { LocalDataService } from '../services/local-data.service';
 import { BankRates } from '../interfaces/bank.interface';
-import { IonSegment } from '@ionic/angular';
+import { IonSegment, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -13,6 +13,7 @@ import { IonSegment } from '@ionic/angular';
 export class Tab1Page implements OnInit {
 
   @ViewChild(IonSegment, { static: true }) bankCodesSegment: IonSegment;
+  isSearching = true;
 
   rates: BankRates[] = [];
   bankCodes: any[];
@@ -24,7 +25,8 @@ export class Tab1Page implements OnInit {
 
 
   constructor( private indexaApi: IndexaApiService,
-               private localData: LocalDataService ) {}
+               private localData: LocalDataService,
+               private loadingCtrl: LoadingController ) {}
 
   ngOnInit() {
     this.bankCodes = this.localData.getBankCodes();
@@ -42,6 +44,7 @@ export class Tab1Page implements OnInit {
   }
 
   changeBank(event) {
+    this.isSearching = true;
     this.bankCodesSegment.value = event.detail.value;
     this.loadBankChange();
   }
@@ -56,15 +59,17 @@ export class Tab1Page implements OnInit {
     const today = moment();
     const sevenDaysAgo = moment().subtract(1, 'week');
     const code = this.bankCodesSegment.value['code'];
+    this.rates = [];
 
     await this.indexaApi.getRates(code).subscribe(
       resp => {
-        const rates = resp.data.filter( rate =>
+        const rates = resp.data
+        .filter( rate =>
           new Date(rate.date) >= sevenDaysAgo.toDate()
         ).filter( rate =>
           new Date(rate.date) <= today.toDate());
-
-        this.rates = rates;
+        this.isSearching = false;
+        this.rates = rates.reverse();
       }
     );
   }
