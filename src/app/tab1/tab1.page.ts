@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IndexaApiService } from '../services/indexa-api.service';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,14 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor( private indexaApi: IndexaApiService ) {}
+
+  getBankRates() {
+    this.indexaApi.getRates('bpd').subscribe(
+      resp => {
+        console.log(resp);
+      }
+    );
+  }
 
 }
