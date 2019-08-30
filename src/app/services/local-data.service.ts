@@ -54,13 +54,58 @@ export class LocalDataService {
     ];
   }
 
-  getRateNames( type: string ) {
+  getRateCodes() {
     return [
-      `dollar${type}rate`,
-      `euro${type}rate`,
-      `swissfranc${type}rate`,
-      `poundsterling${type}rate`,
-      `cdollar${type}rate`,
+      {
+        longCode: `dollarsellrate`,
+        shortCode: 'USD',
+        type: 'Venta'
+      },
+      {
+        longCode: `dollarbuyrate`,
+        shortCode: 'USD',
+        type: 'Compra'
+      },
+      {
+        longCode: `eurosellrate`,
+        shortCode: 'EUR',
+        type: 'Venta'
+      },
+      {
+        longCode: `eurobuyrate`,
+        shortCode: 'EUR',
+        type: 'Compra'
+      },
+      {
+        longCode: `swissfrancsellrate`,
+        shortCode: 'swissfranc',
+        type: 'Venta'
+      },
+      {
+        longCode: `swissfrancbuyrate`,
+        shortCode: 'swissfranc',
+        type: 'Compra'
+      },
+      {
+        longCode: `poundsterlingsellrate`,
+        shortCode: 'poundsterling',
+        type: 'Venta'
+      },
+      {
+        longCode: `poundsterlingbuyrate`,
+        shortCode: 'poundsterling',
+        type: 'Compra'
+      },
+      {
+        longCode: `cdollarsellrate`,
+        shortCode: 'CAD',
+        type: 'Venta'
+      },
+      {
+        longCode: `cdollarbuyrate`,
+        shortCode: 'CAD',
+        type: 'Compra'
+      },
     ];
   }
 }
