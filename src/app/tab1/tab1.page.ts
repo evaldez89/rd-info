@@ -19,8 +19,7 @@ export class Tab1Page implements OnInit {
   bankCodes: any[];
 
   constructor( private indexaApi: IndexaApiService,
-               private localData: LocalDataService,
-               private loadingCtrl: LoadingController ) {}
+               private localData: LocalDataService ) {}
 
   ngOnInit() {
     this.bankCodes = this.localData.getBankCodes();
@@ -54,6 +53,13 @@ export class Tab1Page implements OnInit {
         ).filter( rate =>
           new Date(rate.date) <= today.toDate());
         this.isSearching = false;
+
+        rates.forEach(rate => {
+          const currencyDetail = this.localData.getRateCodes().find( r => r.longCode === rate.name );
+          rate.type = currencyDetail.type;
+          rate.currencyCode = currencyDetail.shortCode;
+        });
+
         this.rates = rates.reverse();
       }
     );

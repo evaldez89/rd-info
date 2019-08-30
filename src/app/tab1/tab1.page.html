@@ -33,7 +33,5 @@
       </ion-grid>
     </ion-slide>
   </ion-slides>
-  <!-- <ion-slide class="slide-full" *ngFor="let publish of rates | groupby: 'date'"> -->
-  <app-rate-slides *ngFor="let publish of rates | groupby: 'date'"
-    [rates]="publish.rates"></app-rate-slides>
+  <app-rate-slides [rates]="rates"></app-rate-slides>
 </ion-content>
