@@ -12,7 +12,7 @@ import { IonSegment } from '@ionic/angular';
 })
 export class Tab1Page implements OnInit {
 
-  @ViewChild(IonSegment) bankCodesSegment: IonSegment;
+  @ViewChild(IonSegment, { static: true }) bankCodesSegment: IonSegment;
 
   rates: BankRates[] = [];
   bankCodes: any[];
