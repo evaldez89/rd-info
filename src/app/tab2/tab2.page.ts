@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonDatetime } from '@ionic/angular';
 import { IndexaApiService } from '../services/indexa-api.service';
 import * as moment from 'moment';
+import { FuelPrice } from '../interfaces/fuel.interface';
 
 @Component({
   selector: 'app-tab2',
@@ -14,6 +15,7 @@ export class Tab2Page implements OnInit {
   minDate: string;
   maxDate: string;
   daysToShow: number[] = [];
+  fuelPrices: FuelPrice[] = [];
 
   constructor( private indexaApi: IndexaApiService ) {}
 
@@ -32,8 +34,16 @@ export class Tab2Page implements OnInit {
         this.daysToShow.push(firstDayOfTheMonth.date());
       }
     }
+  }
 
-    // this.customDate.dayValues = this.daysToShow;
+  async getFuelPrices( event ) {
+    const date = moment( event.detail.value ).format('Y-MM-DD');
+    await this.indexaApi.getFuelPrices(date)
+    .subscribe( resp => {
+      const prices = resp.data;
+      this.fuelPrices = prices;
+    });
 
+    console.log(this.fuelPrices);
   }
 }

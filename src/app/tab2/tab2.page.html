@@ -19,6 +19,7 @@
     <ion-datetime display-format="DDDD DD"
                   placeholder="Día"
                   [dayValues]="daysToShow"
+                  (ionChange)="getFuelPrices( $event )"
                   [(ngModel)]="customDate">
     </ion-datetime>
   </ion-item>
