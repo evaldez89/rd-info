@@ -1,9 +1,20 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Precio de Combustibles
     </ion-title>
   </ion-toolbar>
+
+  <ion-item>
+    <ion-label>Seleccionar Período</ion-label>
+    <ion-datetime display-format="MM-YYYY"
+                  placeholder="MM-YYYY"
+                  [min]="minDate"
+                  [max]="maxDate"
+                  (ionChange)="dateChanged( $event )"
+                  [(ngModel)]="customDate">
+    </ion-datetime>
+  </ion-item>
 </ion-header>
 
 <ion-content></ion-content>
