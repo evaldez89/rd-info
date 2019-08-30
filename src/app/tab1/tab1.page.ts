@@ -32,6 +32,7 @@ export class Tab1Page implements OnInit {
     this.loadBankChange();
   }
 
+  // TODO: these two method must be simplified
   getRateCode( longCode ) {
     return this.localData.getRateCodes().find( rate => rate.longCode === longCode ).shortCode;
   }
@@ -46,6 +47,7 @@ export class Tab1Page implements OnInit {
   }
 
   async loadBankChange() {
+    // TODO: Add loading
     this.rates = [];
     await this.loadBankRates();
   }

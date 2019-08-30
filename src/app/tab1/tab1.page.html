@@ -19,8 +19,11 @@
 
 <ion-content>
   <ion-slides [options]="slidesOpt">
+    <ion-slide *ngIf="rates.length === 0">
+      <ion-card > No hay tasas de cambio </ion-card>
+    </ion-slide>
     <ion-slide *ngFor="let publish of rates | groupby: 'date'">
-      <ion-card >
+      <ion-card *ngIf="rates.length > 0">
         <ion-card-header color="success">
           <ion-card-title>
             {{ publish.date }}
