@@ -21,14 +21,17 @@
   <ion-slides [options]="slidesOpt">
     <ion-slide *ngFor="let publish of rates | groupby: 'date'">
       <ion-card >
-        <ion-card-title>
-          {{ publish.date }}
-        </ion-card-title>
+        <ion-card-header color="success">
+          <ion-card-title>
+            {{ publish.date }}
+          </ion-card-title>
+        </ion-card-header>
         <ion-card-content>
           <ion-list>
             <ion-item *ngFor="let rate of publish.rates">
-              <ion-label> {{ rate.name }}: </ion-label>
-              <ion-label> {{ rate.rate }} </ion-label>
+              <ion-badge color="primary">{{ getRateType(rate.name) }}</ion-badge>
+              <ion-badge color="secondary">{{ getRateCode(rate.name) }}</ion-badge>
+              <ion-label>: {{ rate.rate }} </ion-label>
             </ion-item>
           </ion-list>
         </ion-card-content>

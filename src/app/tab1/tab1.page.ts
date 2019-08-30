@@ -32,6 +32,14 @@ export class Tab1Page implements OnInit {
     this.loadBankChange();
   }
 
+  getRateCode( longCode ) {
+    return this.localData.getRateCodes().find( rate => rate.longCode === longCode ).shortCode;
+  }
+
+  getRateType( longCode ) {
+    return this.localData.getRateCodes().find( rate => rate.longCode === longCode ).type;
+  }
+
   changeBank(event) {
     this.bankCodesSegment.value = event.detail.value;
     this.loadBankChange();
