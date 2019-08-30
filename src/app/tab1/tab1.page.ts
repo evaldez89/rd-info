@@ -3,7 +3,7 @@ import { IndexaApiService } from '../services/indexa-api.service';
 import * as moment from 'moment';
 import { LocalDataService } from '../services/local-data.service';
 import { BankRates } from '../interfaces/bank.interface';
-import { IonSegment, LoadingController } from '@ionic/angular';
+import { IonSegment } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
