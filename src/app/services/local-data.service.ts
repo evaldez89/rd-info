@@ -78,22 +78,22 @@ export class LocalDataService {
       },
       {
         longCode: `swissfrancsellrate`,
-        shortCode: 'swissfranc',
+        shortCode: 'GBP',
         type: 'Venta'
       },
       {
         longCode: `swissfrancbuyrate`,
-        shortCode: 'swissfranc',
+        shortCode: 'GBP',
         type: 'Compra'
       },
       {
         longCode: `poundsterlingsellrate`,
-        shortCode: 'poundsterling',
+        shortCode: 'GBP',
         type: 'Venta'
       },
       {
         longCode: `poundsterlingbuyrate`,
-        shortCode: 'poundsterling',
+        shortCode: 'GBP',
         type: 'Compra'
       },
       {
