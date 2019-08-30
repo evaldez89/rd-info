@@ -19,12 +19,20 @@
 
 <ion-content>
   <ion-slides [options]="slidesOpt">
-    <ion-slide *ngFor="let rate of rates">
-      <ion-card>
+    <ion-slide *ngFor="let publish of rates | groupby: 'date'">
+      <ion-card >
         <ion-card-title>
-          {{ rate.date }}
+          {{ publish.date }}
         </ion-card-title>
-        <ion-card-content> {{ rate.bank }} <br> {{ rate.rate }} </ion-card-content>
+        <ion-card-content>
+          <ion-list>
+            <ion-item *ngFor="let rate of publish.rates">
+              <ion-label> {{ rate.name }}: </ion-label>
+              <ion-label> {{ rate.rate }} </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+        
       </ion-card>
     </ion-slide>
   </ion-slides>

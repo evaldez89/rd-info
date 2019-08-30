@@ -11,13 +11,13 @@ import { IonSegment } from '@ionic/angular';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit {
-  
+
   @ViewChild(IonSegment) bankCodesSegment: IonSegment;
 
   rates: BankRates[] = [];
   bankCodes: any[];
   slidesOpt = {
-    slidesPerView: 2.3,
+    slidesPerView: 1,
     freeMode: true,
     spaceBetween: -5
   };
@@ -37,17 +37,17 @@ export class Tab1Page implements OnInit {
     this.loadBankChange();
   }
 
-  loadBankChange() {
+  async loadBankChange() {
     this.rates = [];
-    this.loadBankRates();
+    await this.loadBankRates();
   }
 
-  loadBankRates() {
+  async loadBankRates() {
     const today = moment();
     const sevenDaysAgo = moment().subtract(1, 'week');
     const code = this.bankCodesSegment.value['code'];
 
-    this.indexaApi.getRates(code).subscribe(
+    await this.indexaApi.getRates(code).subscribe(
       resp => {
         const rates = resp.data.filter( rate =>
           new Date(rate.date) >= sevenDaysAgo.toDate()
