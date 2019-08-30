@@ -59,51 +59,61 @@ export class LocalDataService {
       {
         longCode: `dollarsellrate`,
         shortCode: 'USD',
+        name: 'Dolar Estados Unidos',
         type: 'Venta'
       },
       {
         longCode: `dollarbuyrate`,
         shortCode: 'USD',
+        name: 'Dolar Estados Unidos',
         type: 'Compra'
       },
       {
         longCode: `eurosellrate`,
         shortCode: 'EUR',
+        name: 'Euro',
         type: 'Venta'
       },
       {
         longCode: `eurobuyrate`,
         shortCode: 'EUR',
+        name: 'Euro',
         type: 'Compra'
       },
       {
         longCode: `swissfrancsellrate`,
-        shortCode: 'GBP',
+        shortCode: 'CHF',
+        name: 'Franco Suizo',
         type: 'Venta'
       },
       {
         longCode: `swissfrancbuyrate`,
-        shortCode: 'GBP',
+        shortCode: 'CHF',
+        name: 'Franco Suizo',
         type: 'Compra'
       },
       {
         longCode: `poundsterlingsellrate`,
         shortCode: 'GBP',
+        name: 'Libra Esterlina',
         type: 'Venta'
       },
       {
         longCode: `poundsterlingbuyrate`,
         shortCode: 'GBP',
+        name: 'Libra Esterlina',
         type: 'Compra'
       },
       {
         longCode: `cdollarsellrate`,
         shortCode: 'CAD',
+        name: 'Dolar Canadiense',
         type: 'Venta'
       },
       {
         longCode: `cdollarbuyrate`,
         shortCode: 'CAD',
+        name: 'Dolar Canadiense',
         type: 'Compra'
       },
     ];

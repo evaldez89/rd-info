@@ -8,4 +8,6 @@ export interface BankRates {
   rate: number;
   date: string;
   name: string;
+  type?: string;
+  currencyCode?: string;
 }
