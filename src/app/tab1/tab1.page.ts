@@ -17,12 +17,6 @@ export class Tab1Page implements OnInit {
 
   rates: BankRates[] = [];
   bankCodes: any[];
-  slidesOpt = {
-    slidesPerView: 1,
-    freeMode: true,
-    spaceBetween: -5
-  };
-
 
   constructor( private indexaApi: IndexaApiService,
                private localData: LocalDataService,
@@ -32,15 +26,6 @@ export class Tab1Page implements OnInit {
     this.bankCodes = this.localData.getBankCodes();
     this.bankCodesSegment.value = this.bankCodes[0];
     this.loadBankChange();
-  }
-
-  // TODO: these two method must be simplified
-  getRateCode( longCode ) {
-    return this.localData.getRateCodes().find( rate => rate.longCode === longCode ).shortCode;
-  }
-
-  getRateType( longCode ) {
-    return this.localData.getRateCodes().find( rate => rate.longCode === longCode ).type;
   }
 
   changeBank(event) {

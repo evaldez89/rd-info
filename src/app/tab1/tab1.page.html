@@ -4,22 +4,23 @@
       Tasas de Cambio
     </ion-title>
   </ion-toolbar>
-  
+
   <ion-segment scrollable
-               color="primary"
-               (ionChange)="changeBank( $event )">
-               <ion-segment-button
-                          *ngFor="let bankCode of bankCodes"
-                          [value]="bankCode">
-                          <ion-label text-capitalizze> {{ bankCode.name }} </ion-label>
-                </ion-segment-button>
+    color="primary"
+    (ionChange)="changeBank( $event )">
+    <ion-segment-button
+      *ngFor="let bankCode of bankCodes"
+      [value]="bankCode">
+      <ion-label text-capitalizze> {{ bankCode.name }} </ion-label>
+    </ion-segment-button>
   </ion-segment>
 
 </ion-header>
 
 <ion-content>
-  <ion-slides [options]="slidesOpt">
-    <ion-slide *ngIf="rates.length === 0">
+  <ion-slides>
+
+    <ion-slide class="slide-full" *ngIf="rates.length === 0">
       <ion-grid>
         <ion-row>
           <ion-col text-center *ngIf="isSearching">
@@ -31,24 +32,8 @@
         </ion-row>
       </ion-grid>
     </ion-slide>
-    <ion-slide *ngFor="let publish of rates | groupby: 'date'">
-      <ion-card *ngIf="rates.length > 0">
-        <ion-card-header color="success">
-          <ion-card-title>
-            {{ publish.date }}
-          </ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-list>
-            <ion-item *ngFor="let rate of publish.rates">
-              <ion-badge color="primary">{{ getRateType(rate.name) }}</ion-badge>
-              <ion-badge color="secondary">{{ getRateCode(rate.name) }}</ion-badge>
-              <ion-label>: {{ rate.rate }} </ion-label>
-            </ion-item>
-          </ion-list>
-        </ion-card-content>
-        
-      </ion-card>
-    </ion-slide>
   </ion-slides>
+  <!-- <ion-slide class="slide-full" *ngFor="let publish of rates | groupby: 'date'"> -->
+  <app-rate-slides *ngFor="let publish of rates | groupby: 'date'"
+    [rates]="publish.rates"></app-rate-slides>
 </ion-content>
