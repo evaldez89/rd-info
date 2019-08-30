@@ -8,10 +8,17 @@
   <ion-item>
     <ion-label>Seleccionar Período</ion-label>
     <ion-datetime display-format="MM-YYYY"
-                  placeholder="MM-YYYY"
+                  placeholder="Mes y Año"
                   [min]="minDate"
                   [max]="maxDate"
-                  (ionChange)="dateChanged( $event )"
+                  (ionChange)="dateChanged( $event )">
+    </ion-datetime>
+  </ion-item>
+  <ion-item *ngIf="daysToShow.length > 0">
+    <ion-label>Seleccionar Día</ion-label>
+    <ion-datetime display-format="DDDD DD"
+                  placeholder="Día"
+                  [dayValues]="daysToShow"
                   [(ngModel)]="customDate">
     </ion-datetime>
   </ion-item>
