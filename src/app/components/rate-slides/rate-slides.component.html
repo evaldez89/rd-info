@@ -4,7 +4,7 @@
       <ion-card>
         <ion-card-header color="primary">
           <ion-card-title>
-            {{ publish.group }}
+            {{ publish.group | date :  "dd-MMM-y" }}
           </ion-card-title>
         </ion-card-header>
         <ion-card-content >
