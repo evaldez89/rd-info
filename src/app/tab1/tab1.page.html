@@ -7,7 +7,7 @@
   
   <ion-segment scrollable
                color="primary"
-               (ionChange)="getBankRates( $event )">
+               (ionChange)="changeBank( $event )">
                <ion-segment-button
                           *ngFor="let bankCode of bankCodes"
                           [value]="bankCode">
@@ -16,3 +16,16 @@
   </ion-segment>
 
 </ion-header>
+
+<ion-content>
+  <ion-slides [options]="slidesOpt">
+    <ion-slide *ngFor="let rate of rates">
+      <ion-card>
+        <ion-card-title>
+          {{ rate.date }}
+        </ion-card-title>
+        <ion-card-content> {{ rate.bank }} <br> {{ rate.rate }} </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
