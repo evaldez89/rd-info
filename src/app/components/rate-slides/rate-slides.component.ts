@@ -11,9 +11,8 @@ export class RateSlidesComponent implements OnInit {
 
   @Input() rates: BankRates[] = [];
   slidesOpt = {
-    slidesPerView: 1,
-    freeMode: true,
-    spaceBetween: -5
+    slidesPerView: 1.3,
+    freeMode: true
   };
 
 
