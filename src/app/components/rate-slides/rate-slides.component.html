@@ -1,0 +1,24 @@
+<ion-slides [options]="slidesOpt">
+
+  <ion-slide class="slide-full" *ngFor="let rate of rates">
+      <ion-card>
+        <ion-card-header color="success">
+          <ion-card-title>
+            {{ rate.date }}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-badge color="primary">{{ getRateProperty(rate.name, 'shortCode')
+                }}</ion-badge>
+              <ion-badge color="secondary">{{ getRateProperty(rate.name, 'type') }}</ion-badge>
+              <ion-label>: {{ rate.rate }} </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+
+</ion-slides>
+
