@@ -19,7 +19,7 @@ export class RateSlidesComponent implements OnInit {
 
   constructor( private localData: LocalDataService, ) { }
 
-  ngOnInit() {  }
+  ngOnInit() {}
 
   // TODO: this method must be simplified
   getRateProperty( longCode, property: string ) {

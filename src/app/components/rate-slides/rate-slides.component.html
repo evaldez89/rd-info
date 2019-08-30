@@ -1,21 +1,38 @@
 <ion-slides [options]="slidesOpt">
 
-  <ion-slide class="slide-full" *ngFor="let rate of rates">
+  <ion-slide class="slide-full" *ngFor="let publish of rates | groupby: 'date'">
       <ion-card>
-        <ion-card-header color="success">
+        <ion-card-header color="primary">
           <ion-card-title>
-            {{ rate.date }}
+            {{ publish.group }}
           </ion-card-title>
         </ion-card-header>
-        <ion-card-content>
-          <ion-list>
-            <ion-item>
-              <ion-badge color="primary">{{ getRateProperty(rate.name, 'shortCode')
-                }}</ion-badge>
-              <ion-badge color="secondary">{{ getRateProperty(rate.name, 'type') }}</ion-badge>
-              <ion-label>: {{ rate.rate }} </ion-label>
+        <ion-card-content >
+
+          <ion-grid>
+            <ion-row>
+              <ion-col *ngFor="let currency of publish.rates | groupby: 'type'" size="6">
+                <ion-label>{{ currency.group }}</ion-label>
+
+                <ion-list>
+                  <ion-item *ngFor="let rate of currency.rates">  
+                    <ion-badge color="primary">{{ rate.currencyCode }}</ion-badge>
+                    <ion-badge color="secondary">{{rate.rate}}</ion-badge>
+                  </ion-item>
+                </ion-list>
+                
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <!-- <ion-list>
+            <ion-label>{{ getRateProperty(currency.group, 'name') }}</ion-label>
+            <ion-item *ngFor="let rate of currency.rates">
+              <ion-badge color="primary">{{ getRateProperty(rate.name, 'type') }}</ion-badge>
+              <ion-label> {{ rate.rate }} </ion-label>
+              <ion-badge color="secondary">{{ getRateProperty(rate.name, 'type') }}</ion-badge> 
             </ion-item>
-          </ion-list>
+          </ion-list> -->
         </ion-card-content>
       </ion-card>
     </ion-slide>
