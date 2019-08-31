@@ -1,3 +1,13 @@
-<p>
-  fuel-prices works!
-</p>
+<ion-card>
+  <ion-card-header color="primary">
+    <ion-card-title>Fecha de publicación: {{ publisdDate | date: "dd-MMM-y" }}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-item *ngFor="let fuel of fuelPrices">
+        <ion-label> {{ fuel.name }} </ion-label>
+        <ion-label> {{ fuel.price }} </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>

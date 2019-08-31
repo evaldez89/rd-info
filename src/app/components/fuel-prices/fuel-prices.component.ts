@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FuelPrice } from 'src/app/interfaces/fuel.interface';
 
 @Component({
   selector: 'app-fuel-prices',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./fuel-prices.component.scss'],
 })
 export class FuelPricesComponent implements OnInit {
+
+  @Input() fuelPrices: FuelPrice[] = [];
+  @Input() publisdDate: Date;
 
   constructor() { }
 
