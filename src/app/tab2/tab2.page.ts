@@ -11,7 +11,7 @@ import { FuelPrice } from '../interfaces/fuel.interface';
 })
 export class Tab2Page implements OnInit {
 
-  customDate: IonDatetime;
+  dayPicker;
   minDate: string;
   maxDate: string;
   daysToShow: number[] = [];
@@ -29,6 +29,8 @@ export class Tab2Page implements OnInit {
     const firstDayOfTheMonth = moment(event.detail.value).startOf('month');
     const lastDayOfTheMonth = moment(event.detail.value).endOf('month');
 
+    this.dayPicker = '';
+
     while (firstDayOfTheMonth.add(1, 'days').diff(lastDayOfTheMonth) < 0) {
       if (firstDayOfTheMonth.weekday() === 6 && firstDayOfTheMonth.toDate() <= new Date() ) {
         this.daysToShow.push(firstDayOfTheMonth.date());
@@ -36,14 +38,15 @@ export class Tab2Page implements OnInit {
     }
   }
 
-  async getFuelPrices( event ) {
-    const date = moment( event.detail.value ).format('Y-MM-DD');
-    await this.indexaApi.getFuelPrices(date)
-    .subscribe( resp => {
-      const prices = resp.data;
-      this.fuelPrices = prices;
-    });
+  getFuelPrices( event ) {
+    if (!this.dayPicker) {
+      return;
+    }
 
-    console.log(this.fuelPrices);
+    const date = moment( event.detail.value ).format('Y-MM-DD');
+    this.indexaApi.getFuelPrices(date)
+    .subscribe( resp => {
+      this.fuelPrices = resp.data;
+    });
   }
 }
