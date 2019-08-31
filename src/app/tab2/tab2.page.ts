@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IonDatetime } from '@ionic/angular';
 import { IndexaApiService } from '../services/indexa-api.service';
 import * as moment from 'moment';
 import { FuelPrice } from '../interfaces/fuel.interface';
@@ -12,30 +11,35 @@ import { FuelPrice } from '../interfaces/fuel.interface';
 export class Tab2Page implements OnInit {
 
   dayPicker;
-  minDate: string;
-  maxDate: string;
+  initialDate: Date;
   daysToShow: number[] = [];
   fuelPrices: FuelPrice[] = [];
 
   constructor( private indexaApi: IndexaApiService ) {}
 
   ngOnInit() {
-    this.minDate = moment().subtract(1, 'year').format('Y-MM');
-    this.maxDate = moment().format('Y-MM');
+    this.initialDate = new Date();
+    this.initialDate.setDate(1);
+    this.setPublishDays(this.initialDate.toISOString());
   }
 
-  periodChanged( event ) {
+  setPublishDays(date: string) {
     this.daysToShow = [];
-    const firstDayOfTheMonth = moment(event.detail.value).startOf('month');
-    const lastDayOfTheMonth = moment(event.detail.value).endOf('month');
 
-    this.dayPicker = '';
+    const firstDayOfTheMonth = moment(date).startOf('month');
+    const lastDayOfTheMonth = moment(date).endOf('month');
 
     while (firstDayOfTheMonth.add(1, 'days').diff(lastDayOfTheMonth) < 0) {
       if (firstDayOfTheMonth.weekday() === 6 && firstDayOfTheMonth.toDate() <= new Date() ) {
         this.daysToShow.push(firstDayOfTheMonth.date());
       }
     }
+  }
+
+  periodChanged( event ) {
+    this.dayPicker = '';
+
+    this.setPublishDays(event.detail.value);
   }
 
   getFuelPrices( event ) {

@@ -6,15 +6,17 @@
   </ion-toolbar>
 
   <ion-item>
-    <ion-label>Seleccionar Período</ion-label>
-    <ion-datetime display-format="MM-YYYY"
+    <ion-label>Seleccionar Peíodo</ion-label>
+    <ion-datetime display-format="YYYY MMM"
+                  picker-format="YYYY MMM"
                   placeholder="Mes y Año"
-                  [min]="minDate"
-                  [max]="maxDate"
+                  [value]="initialDate | date: 'y MMM'"
+                  [min]="initialDate.getFullYear() - 1"
+                  [max]="initialDate.getFullYear()"
                   (ionChange)="periodChanged( $event )">
     </ion-datetime>
   </ion-item>
-  <ion-item *ngIf="daysToShow.length > 0">
+  <ion-item>
     <ion-label>Seleccionar Día</ion-label>
     <ion-datetime display-format="DD"
                   picker-format="DD"
@@ -26,4 +28,8 @@
   </ion-item>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <app-fuel-prices *ngIf="fuelPrices.length > 0" 
+                   [publisdDate]="dayPicker"
+                   [fuelPrices]="fuelPrices"></app-fuel-prices>
+</ion-content>
