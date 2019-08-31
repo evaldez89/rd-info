@@ -16,8 +16,8 @@
   </ion-item>
   <ion-item *ngIf="daysToShow.length > 0">
     <ion-label>Seleccionar Día</ion-label>
-    <ion-datetime display-format="DDDD DD"
-                  picker-format="DDDD DD"
+    <ion-datetime display-format="DD"
+                  picker-format="DD"
                   placeholder="Día"
                   [dayValues]="daysToShow"
                   (ionChange)="getFuelPrices( $event )"
