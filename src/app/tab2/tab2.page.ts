@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IndexaApiService } from '../services/indexa-api.service';
 import * as moment from 'moment';
 import { FuelPrice } from '../interfaces/fuel.interface';
+import { IonDatetime } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -10,45 +11,55 @@ import { FuelPrice } from '../interfaces/fuel.interface';
 })
 export class Tab2Page implements OnInit {
 
-  dayPicker;
+  today: moment.Moment = moment();
+  dayPicker: string;
   initialDate: Date;
-  daysToShow: number[] = [];
+  daysToShow: string[] = [];
   fuelPrices: FuelPrice[] = [];
+  @ViewChild('daySelector', {static: true}) daySelectorPicker: IonDatetime;
 
   constructor( private indexaApi: IndexaApiService ) {}
 
   ngOnInit() {
-    this.initialDate = new Date();
+    this.initialDate = this.today.toDate();
     this.initialDate.setDate(1);
     this.setPublishDays(this.initialDate.toISOString());
   }
 
   setPublishDays(date: string) {
+    console.log(date);
     this.daysToShow = [];
 
     const firstDayOfTheMonth = moment(date).startOf('month');
     const lastDayOfTheMonth = moment(date).endOf('month');
 
-    while (firstDayOfTheMonth.add(1, 'days').diff(lastDayOfTheMonth) < 0) {
-      if (firstDayOfTheMonth.weekday() === 6 && firstDayOfTheMonth.toDate() <= new Date() ) {
-        this.daysToShow.push(firstDayOfTheMonth.date());
+    while (firstDayOfTheMonth.diff(lastDayOfTheMonth) < 0) {
+      if (firstDayOfTheMonth.weekday() === 6 && firstDayOfTheMonth <= this.today ) {
+        this.daysToShow.push(firstDayOfTheMonth.format('DD'));
       }
+      firstDayOfTheMonth.add(1, 'days');
     }
+
+    console.log(this.daysToShow);
   }
 
   periodChanged( event ) {
     this.dayPicker = '';
-
-    this.setPublishDays(event.detail.value);
+    const periodDate = moment(event.detail.value);
+    this.setPublishDays(periodDate.format('Y-MM-DD'));
+    this.daySelectorPicker.value = `${periodDate.year()}-${periodDate.format('MM')}-${this.daysToShow[0]}`;
   }
 
-  getFuelPrices( event ) {
+  getFuelPrices() {
     if (!this.dayPicker) {
       return;
     }
 
-    const date = moment( event.detail.value ).format('Y-MM-DD');
-    this.indexaApi.getFuelPrices(date)
+    this.fuelPrices = [];
+
+    const queryDate = moment(this.daySelectorPicker.value).format('Y-MM-DD');
+
+    this.indexaApi.getFuelPrices(queryDate)
     .subscribe( resp => {
       this.fuelPrices = resp.data;
     });

@@ -18,11 +18,12 @@
   </ion-item>
   <ion-item>
     <ion-label>Seleccionar Día</ion-label>
-    <ion-datetime display-format="DD"
+    <ion-datetime #daySelector display-format="DD"
                   picker-format="DD"
                   placeholder="Día"
                   [dayValues]="daysToShow"
-                  (ionChange)="getFuelPrices( $event )"
+                  [yearValues]=""
+                  (ionChange)="getFuelPrices()"
                   [(ngModel)]="dayPicker">
     </ion-datetime>
   </ion-item>
