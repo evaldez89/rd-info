@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class Tab3Page {
 
   searchByName = false;
+  searchType = 'number';
 
   constructor() {}
 
@@ -16,7 +17,11 @@ export class Tab3Page {
   }
 
   changeSearchType() {
-    
+    if ( this.searchByName ) {
+      this.searchType = 'text';
+    } else {
+      this.searchType = 'number';
+    }
   }
 
 }
