@@ -27,7 +27,6 @@ export class Tab2Page implements OnInit {
   }
 
   setPublishDays(date: string) {
-    console.log(date);
     this.daysToShow = [];
 
     const firstDayOfTheMonth = moment(date).startOf('month');
@@ -39,8 +38,6 @@ export class Tab2Page implements OnInit {
       }
       firstDayOfTheMonth.add(1, 'days');
     }
-
-    console.log(this.daysToShow);
   }
 
   periodChanged( event ) {
