@@ -7,6 +7,16 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
+  searchByName = false;
+
   constructor() {}
+
+  searchCompany( event ) {
+
+  }
+
+  changeSearchType() {
+    
+  }
 
 }
