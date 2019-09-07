@@ -9,6 +9,7 @@ export class Tab3Page {
 
   searchByName = false;
   searchType = 'number';
+  searchEndPoint = 'rnc';
 
   constructor() {}
 
@@ -19,8 +20,10 @@ export class Tab3Page {
   changeSearchType() {
     if ( this.searchByName ) {
       this.searchType = 'text';
+      this.searchEndPoint = 'name';
     } else {
       this.searchType = 'number';
+      this.searchEndPoint = 'rnc';
     }
   }
 
