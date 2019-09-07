@@ -3,7 +3,10 @@
     <ion-card-title>Fecha de publicación: {{ publisdDate | date: "dd-MMM-y" }}</ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    <ion-list>
+    <ion-item *ngIf="fuelPrices.length === 0">
+      No existen precios publicados para esta fecha
+    </ion-item>
+    <ion-list *ngIf="fuelPrices.length > 0">
       <ion-item *ngFor="let fuel of fuelPrices">
         <ion-label> {{ fuel.name }} </ion-label>
         <ion-label> {{ fuel.price }} </ion-label>
