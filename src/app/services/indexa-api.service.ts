@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.dev';
 import { BankRatesResponse } from '../interfaces/bank.interface';
 import { FuelPriceResponse } from '../interfaces/fuel.interface';
+import { RncDetailsResponse } from '../interfaces/rnc.interface';
 
 const API_URL = environment.api_url;
 const API_TOKEN = environment.api_token;
@@ -30,5 +31,9 @@ export class IndexaApiService {
 
   getFuelPrices( date: string ) {
     return this.constructQuery<FuelPriceResponse>('fuels', `?date=${date}`);
+  }
+
+  getCompanyInfo(searchBy, term) {
+    return this.constructQuery<RncDetailsResponse>('rnc', `?${searchBy}=${term}`);
   }
 }
