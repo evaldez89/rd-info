@@ -13,8 +13,8 @@ export class LocalDataService {
         queryCode: 'Kerosene',
         code: ''
       },
-      { name: 'Gasoil Optimo',
-        queryCode: 'GasoilOptimo',
+      { name: 'Gasoil Óptimo',
+        queryCode: 'GasoilÓptimo',
         code: ''
       },
       { name: 'Gasoil Regular',
