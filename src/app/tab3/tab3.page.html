@@ -15,8 +15,7 @@
                 [(ngModel)]="searchByName"></ion-toggle>
   </ion-item>
   <ion-item>
-    <ion-searchbar animated="true"
-                   debouce="1000"
+    <ion-searchbar debounce="1000"
                    placeholder="Buscar"
                    [type]="searchType"
                    (ionChange)="searchCompany( $event )"></ion-searchbar>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IndexaApiService } from '../services/indexa-api.service';
 
 @Component({
   selector: 'app-tab3',
@@ -9,22 +10,24 @@ export class Tab3Page {
 
   searchByName = false;
   searchType = 'number';
-  searchEndPoint = 'rnc';
+  searchBy = 'rnc';
+  isSearching = false;
 
-  constructor() {}
+  constructor( private indexaApi: IndexaApiService ) {}
 
   searchCompany( event ) {
-
+    this.indexaApi.getCompanyInfo(this.searchBy, event.detail.value).subscribe(
+      console.log
+    );
   }
 
   changeSearchType() {
     if ( this.searchByName ) {
       this.searchType = 'text';
-      this.searchEndPoint = 'name';
+      this.searchBy = 'name';
     } else {
       this.searchType = 'number';
-      this.searchEndPoint = 'rnc';
+      this.searchBy = 'rnc';
     }
   }
-
 }
