@@ -33,19 +33,18 @@ export class Tab1Page implements OnInit {
     this.loadBankChange();
   }
 
-  async loadBankChange() {
-    // TODO: Add loading
+  loadBankChange() {
     this.rates = [];
-    await this.loadBankRates();
+    this.loadBankRates();
   }
 
-  async loadBankRates() {
+  loadBankRates() {
     const today = moment();
     const sevenDaysAgo = moment().subtract(1, 'week');
     const code = this.bankCodesSegment.value['code'];
     this.rates = [];
 
-    await this.indexaApi.getRates(code).subscribe(
+    this.indexaApi.getRates(code).subscribe(
       resp => {
         const rates = resp.data
         .filter( rate =>
