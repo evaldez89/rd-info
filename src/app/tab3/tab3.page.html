@@ -4,9 +4,6 @@
       Consulta Contribuyente
     </ion-title>
   </ion-toolbar>
-</ion-header>
-
-<ion-content>
   <ion-item>
     <ion-label>Buscar por Nombre</ion-label>
     <ion-toggle mode="ios"
@@ -21,7 +18,9 @@
                    [type]="searchType"
                    (ionChange)="searchCompany( $event )"></ion-searchbar>
   </ion-item>
-  
+</ion-header>
+
+<ion-content>
   <div text-center>
     <ion-spinner *ngIf="isSearching" name="lines"></ion-spinner>
     <ion-label *ngIf="!isSearching && searchTerm && !companyInfo">
