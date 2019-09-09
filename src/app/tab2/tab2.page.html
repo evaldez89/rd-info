@@ -10,9 +10,9 @@
     <ion-datetime display-format="YYYY MMM"
                   picker-format="YYYY MMM"
                   placeholder="Mes y Año"
-                  [value]="initialDate | date: 'y MMM'"
-                  [min]="initialDate.getFullYear() - 1"
-                  [max]="initialDate.getFullYear()"
+                  [value]="initialDate.toDate() | date: 'y MMM'"
+                  [min]="initialDate.toDate().getFullYear() - 1"
+                  [max]="initialDate.toISOString()"
                   (ionChange)="periodChanged( $event )">
     </ion-datetime>
   </ion-item>
@@ -22,7 +22,6 @@
                   picker-format="DD"
                   placeholder="Día"
                   [dayValues]="daysToShow"
-                  [yearValues]=""
                   (ionChange)="getFuelPrices()"
                   [(ngModel)]="dayPicker">
     </ion-datetime>

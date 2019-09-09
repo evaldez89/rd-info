@@ -13,7 +13,7 @@ export class Tab2Page implements OnInit {
 
   today: moment.Moment = moment();
   dayPicker: string;
-  initialDate: Date;
+  initialDate: moment.Moment = moment();
   daysToShow: string[] = [];
   fuelPrices: FuelPrice[] = [];
   @ViewChild('daySelector', {static: true}) daySelectorPicker: IonDatetime;
@@ -21,8 +21,6 @@ export class Tab2Page implements OnInit {
   constructor( private indexaApi: IndexaApiService ) {}
 
   ngOnInit() {
-    this.initialDate = this.today.toDate();
-    this.initialDate.setDate(1);
     this.setPublishDays(this.initialDate.toISOString());
   }
 
@@ -51,8 +49,6 @@ export class Tab2Page implements OnInit {
     if (!this.dayPicker) {
       return;
     }
-
-    this.fuelPrices = [];
 
     const queryDate = moment(this.daySelectorPicker.value).format('Y-MM-DD');
 
