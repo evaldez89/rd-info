@@ -16,12 +16,15 @@ export class Tab2Page implements OnInit {
   initialDate: moment.Moment = moment();
   daysToShow: string[] = [];
   fuelPrices: FuelPrice[] = [];
+  minDate: string;
   @ViewChild('daySelector', {static: true}) daySelectorPicker: IonDatetime;
 
   constructor( private indexaApi: IndexaApiService ) {}
 
   ngOnInit() {
     this.setPublishDays(this.initialDate.toISOString());
+    const sixMontsAgo = moment().subtract(6, 'months');
+    this.minDate = sixMontsAgo.format('Y-MM') + '-01';
   }
 
   setPublishDays(date: string) {

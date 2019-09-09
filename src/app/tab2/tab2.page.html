@@ -11,7 +11,7 @@
                   picker-format="YYYY MMM"
                   placeholder="Mes y Año"
                   [value]="initialDate.toDate() | date: 'y MMM'"
-                  [min]="initialDate.toDate().getFullYear() - 1"
+                  [min]="minDate"
                   [max]="initialDate.toISOString()"
                   (ionChange)="periodChanged( $event )">
     </ion-datetime>
