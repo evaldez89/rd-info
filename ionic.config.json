@@ -1,5 +1,7 @@
 {
   "name": "rd-info",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
