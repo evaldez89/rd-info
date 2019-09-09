@@ -17,8 +17,16 @@
   <ion-item>
     <ion-searchbar debounce="1000"
                    placeholder="Buscar"
+                   [(ngModel)]="searchTerm"
                    [type]="searchType"
                    (ionChange)="searchCompany( $event )"></ion-searchbar>
   </ion-item>
+  
+  <div text-center>
+    <ion-spinner *ngIf="isSearching" name="lines"></ion-spinner>
+    <ion-label *ngIf="!isSearching && searchTerm && !companyInfo">
+      No hay información para mostrar. Término de búsqueda: '{{ searchTerm }}'
+    </ion-label>
+  </div>
 
 </ion-content>
