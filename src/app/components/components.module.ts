@@ -4,13 +4,15 @@ import { RateSlidesComponent } from './rate-slides/rate-slides.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { IonicModule } from '@ionic/angular';
 import { FuelPricesComponent } from './fuel-prices/fuel-prices.component';
+import { CompanyInfoComponent } from './company-info/company-info.component';
 
 
 
 @NgModule({
   declarations: [
     RateSlidesComponent,
-    FuelPricesComponent
+    FuelPricesComponent,
+    CompanyInfoComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { FuelPricesComponent } from './fuel-prices/fuel-prices.component';
   ],
   exports: [
     RateSlidesComponent,
-    FuelPricesComponent
+    FuelPricesComponent,
+    CompanyInfoComponent
   ]
 })
 export class ComponentsModule { }
