@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FuelPrice } from 'src/app/interfaces/fuel.interface';
 import { LocalDataService } from 'src/app/services/local-data.service';
+import * as accents from 'remove-accents';
 
 @Component({
   selector: 'app-fuel-prices',
@@ -17,7 +18,11 @@ export class FuelPricesComponent implements OnInit {
   ngOnInit() {}
 
   getFuelName( queryCode: string ) {
-    return this.localData.getFuelTypes().find( rate => rate.queryCode === queryCode ).name;
+    const fuel = this.localData.getFuelTypes().find( rate => rate.queryCode === accents.remove(queryCode) );
+    if ( fuel.name ) {
+      return fuel.name;
+    }
+    return fuel.queryCode;
   }
 
 }

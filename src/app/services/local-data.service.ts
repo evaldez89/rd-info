@@ -14,7 +14,7 @@ export class LocalDataService {
         code: ''
       },
       { name: 'Gasoil Óptimo',
-        queryCode: 'GasoilÓptimo',
+        queryCode: 'GasoilOptimo',
         code: ''
       },
       { name: 'Gasoil Regular',
@@ -26,7 +26,7 @@ export class LocalDataService {
         code: 'GNV'
       },
       { name: 'Gas Licuado de Petróleo',
-        queryCode: 'GasLicuadodePetróleo(GLP)',
+        queryCode: 'GasLicuadodePetroleo(GLP)',
         code: 'GLP'
       },
       { name: 'Gasolina Premium',
