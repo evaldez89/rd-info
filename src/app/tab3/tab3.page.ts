@@ -20,6 +20,8 @@ export class Tab3Page {
 
   searchCompany() {
 
+    this.searchTerm = this.searchTerm.toUpperCase();
+
     this.isSearching = true;
 
     if ( this.searchTerm.length === 0 ) {
@@ -36,6 +38,8 @@ export class Tab3Page {
         this.companyInfo = resp.data[0];
         this.isSearching = false;
       });
+
+    console.log(this.companyInfo);
 
   }
 
